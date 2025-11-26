@@ -38,6 +38,8 @@
     "vite": "^7.2.2"
   },
   "dependencies": {
+    "lottie-react": "^2.4.1",
+    "react-lottie": "^1.2.10",
     "react-router-dom": "^7.9.6"
   }
 }
