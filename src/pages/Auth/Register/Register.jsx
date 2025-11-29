@@ -6,6 +6,7 @@ import SocialLogin from '../SocialLogin/SocialLogin';
 import axios from 'axios';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
+
 const Register = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { registerUser, updateUserProfile } = useAuth();
@@ -39,11 +40,11 @@ const Register = () => {
                             photoURL: photoURL
                         }
                         axiosSecure.post('/users', userInfo)
-                        .then(res =>{
-                            if(res.data.insertedId){
-                                console.log('user created in the database');
-                            }
-                        })
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    console.log('user created in the database');
+                                }
+                            })
 
 
                         // update user profile to firebase
@@ -54,7 +55,7 @@ const Register = () => {
 
                         updateUserProfile(userProfile)
                             .then(() => {
-                                console.log('user profile updated done.')
+                                // console.log('user profile updated done.')
                                 navigate(location.state || '/');
                             })
                             .catch(error => console.log(error))
@@ -76,7 +77,10 @@ const Register = () => {
                 <fieldset className="fieldset">
                     {/* name field */}
                     <label className="label">Name</label>
-                    <input type="text" {...register('name', { required: true })} className="input" placeholder="Your Name" />
+                    <input type="text"
+                        {...register('name', { required: true })}
+                        className="input"
+                        placeholder="Your Name" />
                     {errors.name?.type === 'required' && <p className='text-red-500'>Name is required.</p>}
 
                     {/* photo image field */}
